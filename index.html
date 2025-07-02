@@ -102,48 +102,34 @@
     </div>
 
     <div class="grid" id="trackGrid">
-      <!-- サンプル曲 -->
-      <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">
-        曲1
-        <audio id="track1" src="music/track1.mp3"></audio>
-      </div>
-
-      <div class="track" data-tags="ジングル 可愛い ピコピコ" onclick="playTrack('track2')">
-        曲2
-        <audio id="track2" src="music/track2.mp3"></audio>
-      </div>
-
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-      </div>
-      
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-      </div>
-
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-      </div>
-      
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-
-      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-        曲3
-        <audio id="track3" src="music/track3.mp3"></audio>
-      </div>
-        
-      </div>      <!-- ここに曲4〜20を同形式で増設 -->
-    </div>
+    <!-- 曲1-20 -->
+    <!-- 各data-tagsを適切に変更してください -->
+    <!-- サンプルとして全20個追加 -->
+    <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">曲1<audio id="track1" src="music/track1.mp3"></audio></div>
+    <div class="track" data-tags="ジングル 可愛い ピコピコ" onclick="playTrack('track2')">曲2<audio id="track2" src="music/track2.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">曲3<audio id="track3" src="music/track3.mp3"></audio></div>
+    <div class="track" data-tags="BGM カッコいい ピアノ" onclick="playTrack('track4')">曲4<audio id="track4" src="music/track4.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 明るい オーケストラ" onclick="playTrack('track5')">曲5<audio id="track5" src="music/track5.mp3"></audio></div>
+    <div class="track" data-tags="BGM 優しい ピアノ" onclick="playTrack('track6')">曲6<audio id="track6" src="music/track6.mp3"></audio></div>
+    <div class="track" data-tags="ジングル 楽しい ピコピコ" onclick="playTrack('track7')">曲7<audio id="track7" src="music/track7.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 幻想的 オーケストラ" onclick="playTrack('track8')">曲8<audio id="track8" src="music/track8.mp3"></audio></div>
+    <div class="track" data-tags="BGM 切ない ピアノ" onclick="playTrack('track9')">曲9<audio id="track9" src="music/track9.mp3"></audio></div>
+    <div class="track" data-tags="ジングル カッコいい ピコピコ" onclick="playTrack('track10')">曲10<audio id="track10" src="music/track10.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 可愛い ピアノ" onclick="playTrack('track11')">曲11<audio id="track11" src="music/track11.mp3"></audio></div>
+    <div class="track" data-tags="BGM 和風 ピアノ" onclick="playTrack('track12')">曲12<audio id="track12" src="music/track12.mp3"></audio></div>
+    <div class="track" data-tags="ジングル 明るい ピコピコ" onclick="playTrack('track13')">曲13<audio id="track13" src="music/track13.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 楽しい オーケストラ" onclick="playTrack('track14')">曲14<audio id="track14" src="music/track14.mp3"></audio></div>
+    <div class="track" data-tags="BGM 幻想的 ピアノ" onclick="playTrack('track15')">曲15<audio id="track15" src="music/track15.mp3"></audio></div>
+    <div class="track" data-tags="ジングル 切ない ピコピコ" onclick="playTrack('track16')">曲16<audio id="track16" src="music/track16.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 カッコいい オーケストラ" onclick="playTrack('track17')">曲17<audio id="track17" src="music/track17.mp3"></audio></div>
+    <div class="track" data-tags="BGM 可愛い ピアノ" onclick="playTrack('track18')">曲18<audio id="track18" src="music/track18.mp3"></audio></div>
+    <div class="track" data-tags="ジングル 優しい ピコピコ" onclick="playTrack('track19')">曲19<audio id="track19" src="music/track19.mp3"></audio></div>
+    <div class="track" data-tags="楽曲 和風 ピアノ" onclick="playTrack('track20')">曲20<audio id="track20" src="music/track20.mp3"></audio></div>
   </div>
+
+  <footer>
+    © 2025 Your Music Site. All rights reserved.
+  </footer>
 
   <script>
     const selectedTags = [];
@@ -177,6 +163,5 @@
       }
     }
   </script>
-
 </body>
 </html>
