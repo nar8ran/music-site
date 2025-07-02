@@ -121,37 +121,58 @@
     © 2025 Your Music Site. All rights reserved.
   </footer>
 
-  <script>
-    const selectedTags = [];
+<script>
+  const selectedTags = [];
+  let currentAudio = null;
 
-    function playTrack(id) {
-      const audio = document.getElementById(id);
-      audio.play();
-    }
+  function playTrack(id) {
+    const audio = document.getElementById(id);
 
-    function toggleTag(btn) {
-      const tag = btn.textContent;
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        const index = selectedTags.indexOf(tag);
-        if (index > -1) selectedTags.splice(index, 1);
+    // 同じ曲を押した場合はトグル（再生→停止）
+    if (currentAudio === audio) {
+      if (!audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+        currentAudio = null;
       } else {
-        btn.classList.add('active');
-        selectedTags.push(tag);
+        audio.play();
+        currentAudio = audio;
       }
-      filterTracks();
-    }
-
-    function filterTracks() {
-      const tracks = document.getElementsByClassName('track');
-
-      for (let i = 0; i < tracks.length; i++) {
-        const tags = tracks[i].getAttribute('data-tags').split(' ');
-        const hasAll = selectedTags.every(t => tags.includes(t));
-
-        tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
+    } else {
+      // 他の曲が再生中なら停止
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
       }
+      // 新しい曲を再生
+      audio.play();
+      currentAudio = audio;
     }
-  </script>
+  }
+
+  function toggleTag(btn) {
+    const tag = btn.textContent;
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+      const index = selectedTags.indexOf(tag);
+      if (index > -1) selectedTags.splice(index, 1);
+    } else {
+      btn.classList.add('active');
+      selectedTags.push(tag);
+    }
+    filterTracks();
+  }
+
+  function filterTracks() {
+    const tracks = document.getElementsByClassName('track');
+
+    for (let i = 0; i < tracks.length; i++) {
+      const tags = tracks[i].getAttribute('data-tags').split(' ');
+      const hasAll = selectedTags.every(t => tags.includes(t));
+
+      tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
+    }
+  }
+</script>
 </body>
 </html>
