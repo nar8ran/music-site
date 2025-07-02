@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>音楽サイト | Multi-tag Search</title>
+  <title>音楽サイト | タグフィルタ</title>
   <style>
     body {
       font-family: sans-serif;
@@ -11,70 +11,114 @@
       text-align: center;
     }
     h1 {
+      margin-bottom: 20px;
+    }
+    .tags {
       margin-bottom: 30px;
     }
-    #searchBox {
-      padding: 10px;
-      font-size: 16px;
-      width: 300px;
-      margin-bottom: 30px;
+    .tag-btn {
+      display: inline-block;
+      padding: 8px 12px;
+      margin: 5px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .tag-btn.active {
+      background: #333;
+      color: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .track {
-      margin: 15px 0;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
       cursor: pointer;
     }
+    .track:hover {
+      background: #eee;
+    }
     audio {
-      display: none; /* プレイヤー非表示 */
+      display: none;
     }
   </style>
 </head>
 <body>
   <h1>My Music Tracks</h1>
 
-  <input type="text" id="searchBox" placeholder="タグをスペースで区切って検索" onkeyup="filterTracks()" />
+  <div class="tags">
+    <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
+    <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
+    <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
 
-  <div class="track" data-tags="明るい ピアノ">
-    <button onclick="playTrack('track1')">曲タイトル①</button>
-    <audio id="track1" src="music/track1.mp3"></audio>
+    <div class="tag-btn" onclick="toggleTag(this)">明るい</div>
+    <div class="tag-btn" onclick="toggleTag(this)">切ない</div>
+    <div class="tag-btn" onclick="toggleTag(this)">優しい</div>
+    <div class="tag-btn" onclick="toggleTag(this)">楽しい</div>
+    <div class="tag-btn" onclick="toggleTag(this)">カッコいい</div>
+    <div class="tag-btn" onclick="toggleTag(this)">可愛い</div>
+    <div class="tag-btn" onclick="toggleTag(this)">ピアノ</div>
+    <div class="tag-btn" onclick="toggleTag(this)">ピコピコ</div>
+    <div class="tag-btn" onclick="toggleTag(this)">和風</div>
+    <div class="tag-btn" onclick="toggleTag(this)">幻想的</div>
   </div>
 
-  <div class="track" data-tags="悲しい オーケストラ">
-    <button onclick="playTrack('track2')">曲タイトル②</button>
-    <audio id="track2" src="music/track2.mp3"></audio>
-  </div>
+  <div class="grid" id="trackGrid">
+    <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">
+      曲1
+      <audio id="track1" src="music/track1.mp3"></audio>
+    </div>
 
-  <div class="track" data-tags="和風 静か">
-    <button onclick="playTrack('track3')">曲タイトル③</button>
-    <audio id="track3" src="music/track3.mp3"></audio>
+    <div class="track" data-tags="ジングル 可愛い ピコピコ" onclick="playTrack('track2')">
+      曲2
+      <audio id="track2" src="music/track2.mp3"></audio>
+    </div>
+
+    <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
+      曲3
+      <audio id="track3" src="music/track3.mp3"></audio>
+    </div>
+
+    <!-- ここに同じ形式で20曲までコピペして増設 -->
   </div>
 
   <script>
+    const selectedTags = [];
+
     function playTrack(id) {
       const audio = document.getElementById(id);
       audio.play();
     }
 
+    function toggleTag(btn) {
+      const tag = btn.textContent;
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        const index = selectedTags.indexOf(tag);
+        if (index > -1) selectedTags.splice(index, 1);
+      } else {
+        btn.classList.add('active');
+        selectedTags.push(tag);
+      }
+      filterTracks();
+    }
+
     function filterTracks() {
-      const input = document.getElementById('searchBox').value.toLowerCase();
-      const filters = input.split(' ').filter(f => f !== '');
       const tracks = document.getElementsByClassName('track');
 
       for (let i = 0; i < tracks.length; i++) {
-        const tags = tracks[i].getAttribute('data-tags').toLowerCase();
-        let show = true;
+        const tags = tracks[i].getAttribute('data-tags').split(' ');
+        const hasAll = selectedTags.every(t => tags.includes(t));
 
-        for (let j = 0; j < filters.length; j++) {
-          if (!tags.includes(filters[j])) {
-            show = false;
-            break;
-          }
-        }
-
-        tracks[i].style.display = show ? '' : 'none';
+        tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
       }
     }
   </script>
