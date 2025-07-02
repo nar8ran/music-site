@@ -2,12 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>音楽サイト | タグフィルタ</title>
+  <title>音楽サイト | 概要バー付き</title>
   <style>
     body {
+      margin: 0;
       font-family: sans-serif;
-      background: #f9f9f9;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 25%;
+      background: #f0f0f0;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .content {
+      width: 75%;
       padding: 40px;
+      box-sizing: border-box;
       text-align: center;
     }
     h1 {
@@ -56,59 +69,56 @@
   </style>
 </head>
 <body>
-  <h1>My Music Tracks</h1>
 
-  <div class="tags">
-    <!-- 1段目: ジャンル -->
-    <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
-    <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
-    <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
+  <div class="sidebar">
+    <h2>概要</h2>
+    <p>
+      ここにサイト説明や作者プロフィール、利用規約など自由に記入してください。
+    </p>
   </div>
 
-  <div class="tags">
-    <!-- 2段目: 音楽イメージ -->
-    <div class="tag-btn" onclick="toggleTag(this)">明るい</div>
-    <div class="tag-btn" onclick="toggleTag(this)">切ない</div>
-    <div class="tag-btn" onclick="toggleTag(this)">優しい</div>
-    <div class="tag-btn" onclick="toggleTag(this)">楽しい</div>
-    <div class="tag-btn" onclick="toggleTag(this)">カッコいい</div>
-    <div class="tag-btn" onclick="toggleTag(this)">可愛い</div>
-    <div class="tag-btn" onclick="toggleTag(this)">ピアノ</div>
-    <div class="tag-btn" onclick="toggleTag(this)">ピコピコ</div>
-    <div class="tag-btn" onclick="toggleTag(this)">和風</div>
-    <div class="tag-btn" onclick="toggleTag(this)">幻想的</div>
-  </div>
+  <div class="content">
+    <h1>My Music Tracks</h1>
 
-  <div class="grid" id="trackGrid">
-    <!-- 曲1-20 -->
-    <!-- 曲ごとにdata-tagsとaudio srcを書き換えてください -->
-    <!-- サンプルとして3曲分記載、残りは同形式でコピペ -->
-    <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">
-      曲1
-      <audio id="track1" src="music/track1.mp3"></audio>
+    <div class="tags">
+      <!-- 1段目: ジャンル -->
+      <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
+      <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
+      <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
     </div>
 
-    <div class="track" data-tags="ジングル 可愛い ピコピコ" onclick="playTrack('track2')">
-      曲2
-      <audio id="track2" src="music/track2.mp3"></audio>
+    <div class="tags">
+      <!-- 2段目: 音楽イメージ -->
+      <div class="tag-btn" onclick="toggleTag(this)">可愛い</div> 
+      <div class="tag-btn" onclick="toggleTag(this)">明るい</div>
+      <div class="tag-btn" onclick="toggleTag(this)">楽しい</div> 
+      <div class="tag-btn" onclick="toggleTag(this)">優しい</div> 
+      <div class="tag-btn" onclick="toggleTag(this)">切ない</div>
+      <div class="tag-btn" onclick="toggleTag(this)">カッコいい</div>
+      <div class="tag-btn" onclick="toggleTag(this)">ピアノ</div>
+      <div class="tag-btn" onclick="toggleTag(this)">ピコピコ</div>
+      <div class="tag-btn" onclick="toggleTag(this)">和風</div>
+      <div class="tag-btn" onclick="toggleTag(this)">幻想的</div>
     </div>
 
-    <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
-      曲3
-      <audio id="track3" src="music/track3.mp3"></audio>
-    </div>
+    <div class="grid" id="trackGrid">
+      <!-- サンプル曲 -->
+      <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">
+        曲1
+        <audio id="track1" src="music/track1.mp3"></audio>
+      </div>
 
-    <!-- 以下、曲4〜20まで同じ形式で増設 -->
-    <!-- 例 -->
-    <div class="track" data-tags="BGM カッコいい ピアノ" onclick="playTrack('track4')">
-      曲4
-      <audio id="track4" src="music/track4.mp3"></audio>
-    </div>
+      <div class="track" data-tags="ジングル 可愛い ピコピコ" onclick="playTrack('track2')">
+        曲2
+        <audio id="track2" src="music/track2.mp3"></audio>
+      </div>
 
-    <!-- ・・・同様に -->
-    <div class="track" data-tags="楽曲 明るい オーケストラ" onclick="playTrack('track20')">
-      曲20
-      <audio id="track20" src="music/track20.mp3"></audio>
+      <div class="track" data-tags="楽曲 切ない 和風" onclick="playTrack('track3')">
+        曲3
+        <audio id="track3" src="music/track3.mp3"></audio>
+      </div>
+
+      <!-- ここに曲4〜20を同形式で増設 -->
     </div>
   </div>
 
@@ -144,5 +154,6 @@
       }
     }
   </script>
+
 </body>
 </html>
