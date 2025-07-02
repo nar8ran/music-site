@@ -14,7 +14,7 @@
       margin-bottom: 20px;
     }
     .tags {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
     .tag-btn {
       display: inline-block;
@@ -31,16 +31,20 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 1000px;
+      margin: 20px auto;
     }
     .track {
       background: #fff;
       border: 1px solid #ccc;
       border-radius: 8px;
-      padding: 20px;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
     }
     .track:hover {
@@ -55,10 +59,14 @@
   <h1>My Music Tracks</h1>
 
   <div class="tags">
+    <!-- 1段目: ジャンル -->
     <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
     <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
     <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
+  </div>
 
+  <div class="tags">
+    <!-- 2段目: 音楽イメージ -->
     <div class="tag-btn" onclick="toggleTag(this)">明るい</div>
     <div class="tag-btn" onclick="toggleTag(this)">切ない</div>
     <div class="tag-btn" onclick="toggleTag(this)">優しい</div>
@@ -72,6 +80,9 @@
   </div>
 
   <div class="grid" id="trackGrid">
+    <!-- 曲1-20 -->
+    <!-- 曲ごとにdata-tagsとaudio srcを書き換えてください -->
+    <!-- サンプルとして3曲分記載、残りは同形式でコピペ -->
     <div class="track" data-tags="BGM 明るい ピアノ" onclick="playTrack('track1')">
       曲1
       <audio id="track1" src="music/track1.mp3"></audio>
@@ -87,7 +98,18 @@
       <audio id="track3" src="music/track3.mp3"></audio>
     </div>
 
-    <!-- ここに同じ形式で20曲までコピペして増設 -->
+    <!-- 以下、曲4〜20まで同じ形式で増設 -->
+    <!-- 例 -->
+    <div class="track" data-tags="BGM カッコいい ピアノ" onclick="playTrack('track4')">
+      曲4
+      <audio id="track4" src="music/track4.mp3"></audio>
+    </div>
+
+    <!-- ・・・同様に -->
+    <div class="track" data-tags="楽曲 明るい オーケストラ" onclick="playTrack('track20')">
+      曲20
+      <audio id="track20" src="music/track20.mp3"></audio>
+    </div>
   </div>
 
   <script>
