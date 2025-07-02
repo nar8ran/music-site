@@ -2,25 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>音楽サイト | 概要バー付き</title>
+  <title>音楽サイト | タグフィルタ</title>
   <style>
     body {
-      margin: 0;
       font-family: sans-serif;
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 25%;
-      background: #f0f0f0;
-      padding: 20px;
-      box-sizing: border-box;
-      text-align: left;
-    }
-    .content {
-      width: 75%;
-      padding: 40px;
-      box-sizing: border-box;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 40px 0 80px; /* 下部バー分余白 */
       text-align: center;
     }
     h1 {
@@ -44,9 +32,9 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(5, 150px);
       gap: 15px;
-      max-width: 1000px;
+      justify-content: center;
       margin: 20px auto;
     }
     .track {
@@ -66,26 +54,27 @@
     audio {
       display: none;
     }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
+  <h1>My Music Tracks</h1>
 
-  <div class="sidebar">
-    <h2>概要</h2>
-    <p>
-      ここにサイト説明や作者プロフィール、利用規約など自由に記入してください。あああ
-    </p>
+  <div class="tags">
+    <!-- 1段目: ジャンル -->
+    <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
+    <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
+    <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
   </div>
-
-  <div class="content">
-    <h1>My Music Tracks</h1>
-
-    <div class="tags">
-      <!-- 1段目: ジャンル -->
-      <div class="tag-btn" onclick="toggleTag(this)">ジングル</div>
-      <div class="tag-btn" onclick="toggleTag(this)">BGM</div>
-      <div class="tag-btn" onclick="toggleTag(this)">楽曲</div>
-    </div>
     
     <div class="tags">
       <!-- 2段目: 音楽イメージ -->
