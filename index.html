@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>音楽サイト | Sample</title>
+  <title>音楽サイト | Multi-tag Search</title>
   <style>
     body {
       font-family: sans-serif;
@@ -11,6 +11,12 @@
       text-align: center;
     }
     h1 {
+      margin-bottom: 30px;
+    }
+    #searchBox {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
       margin-bottom: 30px;
     }
     .track {
@@ -29,17 +35,19 @@
 <body>
   <h1>My Music Tracks</h1>
 
-  <div class="track">
+  <input type="text" id="searchBox" placeholder="タグをスペースで区切って検索" onkeyup="filterTracks()" />
+
+  <div class="track" data-tags="明るい ピアノ">
     <button onclick="playTrack('track1')">曲タイトル①</button>
     <audio id="track1" src="music/track1.mp3"></audio>
   </div>
 
-  <div class="track">
+  <div class="track" data-tags="悲しい オーケストラ">
     <button onclick="playTrack('track2')">曲タイトル②</button>
     <audio id="track2" src="music/track2.mp3"></audio>
   </div>
 
-  <div class="track">
+  <div class="track" data-tags="和風 静か">
     <button onclick="playTrack('track3')">曲タイトル③</button>
     <audio id="track3" src="music/track3.mp3"></audio>
   </div>
@@ -48,6 +56,26 @@
     function playTrack(id) {
       const audio = document.getElementById(id);
       audio.play();
+    }
+
+    function filterTracks() {
+      const input = document.getElementById('searchBox').value.toLowerCase();
+      const filters = input.split(' ').filter(f => f !== '');
+      const tracks = document.getElementsByClassName('track');
+
+      for (let i = 0; i < tracks.length; i++) {
+        const tags = tracks[i].getAttribute('data-tags').toLowerCase();
+        let show = true;
+
+        for (let j = 0; j < filters.length; j++) {
+          if (!tags.includes(filters[j])) {
+            show = false;
+            break;
+          }
+        }
+
+        tracks[i].style.display = show ? '' : 'none';
+      }
     }
   </script>
 </body>
