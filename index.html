@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>音楽サイト | Sample</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .track {
+      margin: 15px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    audio {
+      display: none; /* プレイヤー非表示 */
+    }
+  </style>
+</head>
+<body>
+  <h1>My Music Tracks</h1>
+
+  <div class="track">
+    <button onclick="playTrack('track1')">曲タイトル①</button>
+    <audio id="track1" src="music/track1.mp3"></audio>
+  </div>
+
+  <div class="track">
+    <button onclick="playTrack('track2')">曲タイトル②</button>
+    <audio id="track2" src="music/track2.mp3"></audio>
+  </div>
+
+  <div class="track">
+    <button onclick="playTrack('track3')">曲タイトル③</button>
+    <audio id="track3" src="music/track3.mp3"></audio>
+  </div>
+
+  <script>
+    function playTrack(id) {
+      const audio = document.getElementById(id);
+      audio.play();
+    }
+  </script>
+</body>
+</html>
