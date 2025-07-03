@@ -79,6 +79,24 @@
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
     }
+    .floating-link {
+      position: fixed;
+      bottom: 60px; /* フッター上に配置 */
+      width: 100%;
+      text-align: center;
+    }
+    .floating-link a {
+      background: #00cc66;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .floating-link a:hover {
+      background: #009944;
+    }
     audio {
       display: none;
     }
@@ -241,14 +259,11 @@
       <audio id="kampana" src="music/kampana.mp3"></audio>
   </div>
   
-</div>    
-  </div>
-    
-  <footer>
- <div>
+<div class="floating-link">
     <a href="https://lit.link/nar8ran" target="_blank">メインサイトはこちら</a>
   </div>
-    
+
+  <footer>
     © 2025 Naro studio. All rights reserved.
   </footer>
 
@@ -260,31 +275,36 @@
   function playTrack(id) {
     const audio = document.getElementById(id);
     const trackDiv = audio.parentElement;
+    const anim = trackDiv.querySelector('.playing-animation');
 
-    // 同じ曲を押した場合はトグル（再生→停止）
     if (currentAudio === audio) {
       if (!audio.paused) {
         audio.pause();
         audio.currentTime = 0;
         trackDiv.classList.remove('playing');
+        if (anim) anim.style.display = 'none';
         currentAudio = null;
         currentTrackDiv = null;
       } else {
         audio.play();
         trackDiv.classList.add('playing');
+        if (anim) anim.style.display = 'inline-block';
         currentAudio = audio;
         currentTrackDiv = trackDiv;
       }
     } else {
-      // 他の曲が再生中なら停止＆ハイライト解除
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
-        if (currentTrackDiv) currentTrackDiv.classList.remove('playing');
+        if (currentTrackDiv) {
+          currentTrackDiv.classList.remove('playing');
+          const prevAnim = currentTrackDiv.querySelector('.playing-animation');
+          if (prevAnim) prevAnim.style.display = 'none';
+        }
       }
-      // 新しい曲を再生＆ハイライト
       audio.play();
       trackDiv.classList.add('playing');
+      if (anim) anim.style.display = 'inline-block';
       currentAudio = audio;
       currentTrackDiv = trackDiv;
     }
@@ -305,11 +325,9 @@
 
   function filterTracks() {
     const tracks = document.getElementsByClassName('track');
-
     for (let i = 0; i < tracks.length; i++) {
       const tags = tracks[i].getAttribute('data-tags').split(' ');
       const hasAll = selectedTags.every(t => tags.includes(t));
-
       tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
     }
   }
