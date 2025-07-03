@@ -10,7 +10,7 @@
   <style>
    body {
   font-family: 'M PLUS 1p', sans-serif;
-  background: #ffffe7; /* 背景を白に変更 */
+  background: #ffffff; /* 背景を白に変更 */
   margin: 0;
   padding: 40px 0 80px;
   text-align: center;
@@ -85,9 +85,16 @@
       width: 100%;
       text-align: center;
     }
-    .floating-link a {
-  display: inline-block;
-  background: orange; /* footerと同色に */
+ .floating-link {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.floating-link a {
+  background: orange;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -97,8 +104,9 @@
 }
 
 .floating-link a:hover {
-  background: #ff9900; /* ホバー時の色変化（お好みで） */
+  background: #ff9900;
 }
+
     audio {
       display: none;
     }
