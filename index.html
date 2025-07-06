@@ -7,130 +7,158 @@
   <!-- Comfortaa & M PLUS 1p フォント追加 -->
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=M+PLUS+1p&display=swap" rel="stylesheet">
 
- <style>
-    body {
-      font-family: 'M PLUS 1p', sans-serif;
-      background: #fffaf5;
-      margin: 0;
-      padding: 40px 0 80px;
-      text-align: center;
-    }
-    h1 {
-      font-family: 'Comfortaa', cursive;
-    }
-    .tags {
-      margin-bottom: 10px;
-    }
-    .tag-btn {
-      display: inline-block;
-      padding: 8px 12px;
-      margin: 5px;
-      border: 1px solid #333;
-      border-radius: 4px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .genre-btn {
-      border-width: 2px;
-      font-weight: bold;
-    }
-    .tag-btn.active {
-      background: #333;
-      color: #fff;
-    }
+<style>
+  body {
+    font-family: 'M PLUS 1p', sans-serif;
+    background: #fffaf5;
+    margin: 0;
+    padding: 40px 0 80px;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Comfortaa', cursive;
+  }
+
+  .tags {
+    margin-bottom: 10px;
+  }
+
+  .tag-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .genre-btn {
+    border-width: 2px;
+    font-weight: bold;
+  }
+
+  .tag-btn.active {
+    background: #333;
+    color: #fff;
+  }
+
   .grid {
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
-  border-radius: 12px;
-  padding: 20px;
-}
-    .track {
-      background: #fff;
-      border: none;
-      border-radius: 8px;
-      width: 150px;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      position: relative;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      transition: box-shadow 0.3s ease;
-    }
-    .track:hover {
-      background: #eee;
-    }
-    .track.playing {
-      background: #ffffcc;
-      border-color: #3399cc;
-    }
-    .playing-animation {
-      display: none;
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #99ff99;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-    .duration {
-      display: block;
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      color: #999;
-    }
-    .link-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      position: fixed;
-      bottom: 60px;
-      width: 100%;
-    }
-    .link-buttons a {
-      padding: 8px 16px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    .link-buttons a.commission {
-      background: #ffb31a;
-    }
-    .link-buttons a.commission:hover {
-      background: orange;
-    }
-    .link-buttons a.main-site {
-      background: #88cc7a;
-    }
-    .link-buttons a.main-site:hover {
-      background: #66aa55;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #88cc7a;
-      color: #fff;
-      padding: 10px 0;
-      font-size: 14px;
-    }
-    audio {
-      display: none;
-    }
-  </style>
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+  }
+
+  .track {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    /* カード型影 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .track:hover {
+    background: #eee;
+    /* ホバー時に影を強調＋少し浮き上がる */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    transform: translateY(-3px);
+  }
+
+  .track.playing {
+    background: #ffffcc;
+    border-color: #3399cc;
+  }
+
+  .playing-animation {
+    display: none;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #99ff99;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+
+  .duration {
+    display: block;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #999;
+  }
+
+  .link-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+  }
+
+  .link-buttons a {
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* コミッションボタンカラー */
+  .link-buttons a.commission {
+    background: #ffb31a;
+  }
+
+  .link-buttons a.commission:hover {
+    background: orange;
+  }
+
+  /* メインサイトボタンカラー */
+  .link-buttons a.main-site {
+    background: #88cc7a;
+  }
+
+  .link-buttons a.main-site:hover {
+    background: #66aa55;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #88cc7a;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  audio {
+    display: none;
+  }
+</style>
   
 </head>
 <body>
