@@ -81,6 +81,12 @@
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
     }
+.duration {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #999;
+}    
     .floating-link {
       position: fixed;
       bottom: 60px; /* フッター上に配置 */
@@ -162,8 +168,9 @@
     <!-- 各data-tagsを適切に変更してください -->
 <div class="grid" id="trackGrid">
   <div class="track" data-tags="BGM ジングル 明るい 楽しい 可愛い ポップ" onclick="playTrack('27')">ポッピンラビッツ
-     <span class="playing-animation"></span>
-    <audio id="27" src="music/27.mp3"></audio>
+      <span class="duration"></span>
+      <span class="playing-animation"></span>
+      <audio id="27" src="music/27.mp3"></audio>
   </div>
 
   <div class="track" data-tags="明るい 優しい 可愛い 自然 和風 ジングル リラックス" onclick="playTrack('hamupi-')">潮と桜
@@ -350,6 +357,22 @@
       tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
     }
   }
+window.onload = function() {
+  const tracks = document.querySelectorAll('.track');
+
+  tracks.forEach(track => {
+    const audio = track.querySelector('audio');
+    const durationSpan = track.querySelector('.duration');
+
+    // メタデータ読み込み後にdurationを取得
+    audio.addEventListener('loadedmetadata', () => {
+      const duration = audio.duration;
+      const minutes = Math.floor(duration / 60);
+      const seconds = Math.floor(duration % 60).toString().padStart(2, '0');
+      durationSpan.textContent = `${minutes}:${seconds}`;
+    });
+  });
+};  
 </script>
 </body>
 </html>
