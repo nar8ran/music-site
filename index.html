@@ -7,22 +7,18 @@
   <!-- Comfortaa & M PLUS 1p フォント追加 -->
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=M+PLUS+1p&display=swap" rel="stylesheet">
 
-  <style>
-   body {
-  font-family: 'M PLUS 1p', sans-serif;
-  background: #fffaf5; /* 背景を白に変更 */
-  margin: 0;
-  padding: 40px 0 80px;
-  text-align: center;
-}
+ <style>
+    body {
+      font-family: 'M PLUS 1p', sans-serif;
+      background: #fffaf5;
+      margin: 0;
+      padding: 40px 0 80px;
+      text-align: center;
+    }
     h1 {
       font-family: 'Comfortaa', cursive;
     }
-    caption {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #555;
-}    .tags {
+    .tags {
       margin-bottom: 10px;
     }
     .tag-btn {
@@ -50,22 +46,22 @@
       margin: 20px auto;
     }
     .track {
-  background: #fff;
-  border: none; /* 縁をなくす */
-  border-radius: 8px;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* 影をつける */
-  transition: box-shadow 0.3s ease; /* ホバー時に滑らか変化 */
-}
-   .track:hover {
-  background: #eee; /* お好みで背景色変更 */
-}
+      background: #fff;
+      border: none;
+      border-radius: 8px;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease;
+    }
+    .track:hover {
+      background: #eee;
+    }
     .track.playing {
       background: #ffffcc;
       border-color: #3399cc;
@@ -85,66 +81,58 @@
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
     }
-.duration {
-  display: block;
-  position: absolute;
-  bottom: 8px;   /* 下から8pxに配置 */
-  left: 50%;     /* 横中央に配置 */
-  transform: translateX(-50%); /* 真ん中寄せ */
-  font-size: 12px;
-  color: #999;
-}
-
+    .duration {
+      display: block;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #999;
+    }
+    .link-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 60px;
+      width: 100%;
+    }
+    .link-buttons a {
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .link-buttons a.commission {
+      background: #ffb31a;
+    }
+    .link-buttons a.commission:hover {
+      background: orange;
+    }
+    .link-buttons a.main-site {
+      background: #88cc7a;
+    }
+    .link-buttons a.main-site:hover {
+      background: #66aa55;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #88cc7a;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 14px;
+    }
     audio {
       display: none;
     }
-    footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #88cc7a;
-  color: #fff;
-  padding: 10px 0;
-  font-size: 14px;
-    }
-
-.link-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  position: fixed;
-  bottom: 60px;
-  width: 100%;
-}
-
-.link-buttons a {
-  padding: 8px 16px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* コミッションボタンカラー */
-.link-buttons a.commission {
-  background: #ffb31a; /* オレンジ系 */
-}
-
-.link-buttons a.commission:hover {
-  background: orange;
-}
-
-/* メインサイトボタンカラー */
-.link-buttons a.main-site {
-  background: #88cc7a; /* グリーン系 */
-}
-
-.link-buttons a.main-site:hover {
-  background: #66aa55;
-}    
   </style>
+  
 </head>
 <body>
 <h1>Naro studio</h1>
