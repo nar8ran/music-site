@@ -10,7 +10,7 @@
   <style>
     body {
       font-family: 'M PLUS 1p', sans-serif;
-      background: #fffef3;
+      background: #fffef9;
       margin: 0;
       padding: 40px 0 80px;
       text-align: center;
@@ -103,14 +103,17 @@
     }
     audio { display: none; }
 
-    .link-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      position: fixed;
-      bottom: 60px;
-      width: 100%;
-    }
+ .link-buttons {
+  display: flex;
+  justify-content: center; /* 中央寄せ */
+  gap: 10px;
+  position: fixed;
+  bottom: 60px;
+  left: 50%; /* 画面の50%位置に配置 */
+  transform: translateX(-50%); /* 自分の幅の半分だけ左に戻す（完全中央寄せ） */
+  width: auto;
+}
+
     .link-buttons a {
       display: inline-block; /* 追加: リンクをボタン表示にする */
       padding: 8px 16px;
