@@ -10,7 +10,7 @@
   <style>
     body {
       font-family: 'M PLUS 1p', sans-serif;
-      background: #fffef9;
+      background: #ffffff;
       margin: 0;
       padding: 40px 0 80px;
       text-align: center;
@@ -103,19 +103,18 @@
     }
     audio { display: none; }
 
- .link-buttons {
-  display: flex;
-  justify-content: center; /* 中央寄せ */
-  gap: 10px;
-  position: fixed;
-  bottom: 60px;
-  left: 50%; /* 画面の50%位置に配置 */
-  transform: translateX(-50%); /* 自分の幅の半分だけ左に戻す（完全中央寄せ） */
-  width: auto;
-}
-
+    .link-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto; /* 中央寄せ修正 */
+    }
     .link-buttons a {
-      display: inline-block; /* 追加: リンクをボタン表示にする */
+      display: inline-block;
       padding: 8px 16px;
       border-radius: 20px;
       text-decoration: none;
@@ -123,19 +122,11 @@
       color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .link-buttons a.commission {
-      background: #4FC3F7; /* 水色 */
-    }
-    .link-buttons a.commission:hover {
-      background: #29B6F6;
-    }
-   .link-buttons a.main-site {
-  background: #ffb31a; /* オレンジ */
-}
+    .link-buttons a.commission { background: #4FC3F7; }
+    .link-buttons a.commission:hover { background: #29B6F6; }
+    .link-buttons a.main-site { background: #ffb31a; }
+    .link-buttons a.main-site:hover { background: orange; }
 
-.link-buttons a.main-site:hover {
-  background: orange; /* 濃いオレンジ */
-}
     footer {
       position: fixed;
       bottom: 0;
