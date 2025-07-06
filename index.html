@@ -95,34 +95,6 @@
   color: #999;
 }
 
-    .floating-link {
-      position: fixed;
-      bottom: 60px; /* フッター上に配置 */
-      width: 100%;
-      text-align: center;
-    }
- .floating-link {
-  position: fixed;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-.floating-link a {
-  background: #ffb31a;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.floating-link a:hover {
-  background: orange;
-}
-
     audio {
       display: none;
     }
@@ -136,6 +108,42 @@
   padding: 10px 0;
   font-size: 14px;
     }
+
+.link-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 60px;
+  width: 100%;
+}
+
+.link-buttons a {
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* コミッションボタンカラー */
+.link-buttons a.commission {
+  background: #ffb31a; /* オレンジ系 */
+}
+
+.link-buttons a.commission:hover {
+  background: orange;
+}
+
+/* メインサイトボタンカラー */
+.link-buttons a.main-site {
+  background: #88cc7a; /* グリーン系 */
+}
+
+.link-buttons a.main-site:hover {
+  background: #66aa55;
+}    
   </style>
 </head>
 <body>
