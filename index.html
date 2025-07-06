@@ -324,7 +324,7 @@
   </footer>
 
 <script>
-  const selectedTags = [];
+ const selectedTags = [];
   let currentAudio = null;
   let currentTrackDiv = null;
 
@@ -387,23 +387,21 @@
       tracks[i].style.display = hasAll || selectedTags.length === 0 ? '' : 'none';
     }
   }
-document.addEventListener('DOMContentLoaded', function() {
-  const tracks = document.querySelectorAll('.track');
-  ...
-});
-  tracks.forEach(track => {
-    const audio = track.querySelector('audio');
-    const durationSpan = track.querySelector('.duration');
 
-    // メタデータ読み込み後にdurationを取得
-    audio.addEventListener('loadedmetadata', () => {
-      const duration = audio.duration;
-      const minutes = Math.floor(duration / 60);
-      const seconds = Math.floor(duration % 60).toString().padStart(2, '0');
-      durationSpan.textContent = `${minutes}:${seconds}`;
+  document.addEventListener('DOMContentLoaded', function() {
+    const tracks = document.querySelectorAll('.track');
+    tracks.forEach(track => {
+      const audio = track.querySelector('audio');
+      const durationSpan = track.querySelector('.duration');
+
+      audio.addEventListener('loadedmetadata', () => {
+        const duration = audio.duration;
+        const minutes = Math.floor(duration / 60);
+        const seconds = Math.floor(duration % 60).toString().padStart(2, '0');
+        durationSpan.textContent = `${minutes}:${seconds}`;
+      });
     });
   });
-};  
 </script>
 </body>
 </html>
